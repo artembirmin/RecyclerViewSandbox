@@ -1,8 +1,10 @@
 package com.example.recyclerview;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,11 @@ import java.util.List;
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
 
     private List<Calculator> calculatorList = new ArrayList<>();
+    private final AdapterView.OnItemClickListener onItemClickListener;
+
+    public RVAdapter(AdapterView.OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
     public void setItems(Collection<Calculator> calculators){
         calculatorList.addAll(calculators);
@@ -30,13 +37,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
     @Override
     public CalcViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, parent, false);
-        return  new CalcViewHolder(view);
+        return new CalcViewHolder(view, onItemClickListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CalcViewHolder holder, int position) {
         holder.bind(calculatorList.get(position));
-
     }
 
     @Override
@@ -44,17 +50,19 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
         return calculatorList.size();
     }
 
-    public static class CalcViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class CalcViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView nameTextView;
         private TextView contentTextView;
+        private Calculator calculator;
+        private final AdapterView.OnItemClickListener onItemClickListener;
 
-
-
-        public CalcViewHolder(@NonNull View itemView) {
+        public CalcViewHolder(@NonNull View itemView, AdapterView.OnItemClickListener onItemClickListener) {
             super(itemView);
             nameTextView = (TextView) itemView.findViewById(R.id.name);
             contentTextView = (TextView) itemView.findViewById(R.id.content);
+            this.onItemClickListener = onItemClickListener;
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Calculator calculator) {
@@ -64,7 +72,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
 
         @Override
         public void onClick(View view) {
-
+            //Здесь основные действия
+            Log.d("qwerty", "onClick: ");
         }
     }
 }
