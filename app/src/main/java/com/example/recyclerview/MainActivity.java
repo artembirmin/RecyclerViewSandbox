@@ -3,6 +3,8 @@ package com.example.recyclerview;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.OnCalcu
     public void onCalculatorClick(int position) {
 
         Log.d("qwerty", "onCalculatorClick: " + position);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
     }
 

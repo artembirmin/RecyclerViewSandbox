@@ -1,5 +1,6 @@
 package com.example.recyclerview;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,8 +73,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
         @Override
         public void onClick(View view) {
             //Здесь основные действия
-           // Intent intent = new Intent(view.getContext(), MainActivity2.class);
-           // view.getContext().startActivity(intent);
+            Intent intent = new Intent(view.getContext(), MainActivity2.class);
+            view.getContext().startActivity(intent);
             Log.d("qwerty", "onClick: " + getAdapterPosition());
             calculatorClickListener.onCalculatorClick(getAdapterPosition());
         }
