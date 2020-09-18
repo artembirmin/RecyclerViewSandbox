@@ -7,30 +7,39 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RVAdapter.OnCalculatorClickListener {
 
-    List<Calculator> calculatorList;
+    ArrayList<Calculator> calculatorList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
+        initRV();
 
-        LinearLayoutManager llm = new LinearLayoutManager(this);
+    }
+
+    @Override
+    public void onCalculatorClick(int position) {
+
+        Log.d("qwerty", "onCalculatorClick: " + position);
+
+    }
+
+    private void initRV(){
+        RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        RVAdapter adapter = new RVAdapter(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("qwerty", "onItemClick: ");
-            }
-        });
+        RVAdapter adapter = new RVAdapter(calculatorList, this);
         rv.setAdapter(adapter);
         adapter.setItems(Arrays.asList(new Calculator("Калькулятор 1", "1232435+433543+24*-3+5*-3"), new Calculator("Калькулятор 1", "1232435+433543+24*-3+5*-3"),
                 new Calculator("Калькулятор 2", "1233434343425544535532435+433543+24*-3+5*-3"),
                 new Calculator("Калькулятор 3", "1232435+433543+24*-3+5*-3")));
+        adapter.notifyDataSetChanged();
     }
 }

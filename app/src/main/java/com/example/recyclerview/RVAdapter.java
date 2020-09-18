@@ -1,14 +1,10 @@
 package com.example.recyclerview;
 
-import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +15,12 @@ import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
 
-    private List<Calculator> calculatorList = new ArrayList<>();
-    private final AdapterView.OnItemClickListener onItemClickListener;
+    private ArrayList<Calculator> calculatorList;
+    private OnCalculatorClickListener onCalculatorClickListener;
 
-    public RVAdapter(AdapterView.OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
+    public RVAdapter (ArrayList<Calculator> calculatorList ,OnCalculatorClickListener calculatorClickListener) {
+        this.calculatorList = calculatorList;
+        this.onCalculatorClickListener = calculatorClickListener;
     }
 
     public void setItems(Collection<Calculator> calculators){
@@ -40,7 +37,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
     @Override
     public CalcViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, parent, false);
-        return new CalcViewHolder(view, onItemClickListener);
+        return new CalcViewHolder(view, onCalculatorClickListener);
     }
 
     @Override
@@ -57,14 +54,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
 
         private TextView nameTextView;
         private TextView contentTextView;
-        private Calculator calculator;
-        private final AdapterView.OnItemClickListener onItemClickListener;
+        private final OnCalculatorClickListener calculatorClickListener;
 
-        public CalcViewHolder(@NonNull View itemView, AdapterView.OnItemClickListener onItemClickListener) {
+        public CalcViewHolder(@NonNull View itemView, OnCalculatorClickListener calculatorClickListener) {
             super(itemView);
             nameTextView = (TextView) itemView.findViewById(R.id.name);
             contentTextView = (TextView) itemView.findViewById(R.id.content);
-            this.onItemClickListener = onItemClickListener;
+            this.calculatorClickListener = calculatorClickListener;
             itemView.setOnClickListener(this);
         }
 
@@ -78,7 +74,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
             //Здесь основные действия
            // Intent intent = new Intent(view.getContext(), MainActivity2.class);
            // view.getContext().startActivity(intent);
-            Log.e("qwerty", "onClick: ");
+            Log.d("qwerty", "onClick: " + getAdapterPosition());
+            calculatorClickListener.onCalculatorClick(getAdapterPosition());
         }
+    }
+
+    public interface OnCalculatorClickListener {
+        void onCalculatorClick(int position);
     }
 }
