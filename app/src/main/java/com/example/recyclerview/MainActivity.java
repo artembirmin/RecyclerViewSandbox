@@ -3,12 +3,10 @@ package com.example.recyclerview;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         });
         rv.setAdapter(adapter);
         adapter.setItems(Arrays.asList(new Calculator("Калькулятор 1", "1232435+433543+24*-3+5*-3"), new Calculator("Калькулятор 1", "1232435+433543+24*-3+5*-3"),
-                new Calculator("Калькулятор 2", "1232435+433543+24*-3+5*-3"),
+                new Calculator("Калькулятор 2", "1233434343425544535532435+433543+24*-3+5*-3"),
                 new Calculator("Калькулятор 3", "1232435+433543+24*-3+5*-3")));
     }
 }

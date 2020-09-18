@@ -1,11 +1,14 @@
 package com.example.recyclerview;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,7 +53,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
         return calculatorList.size();
     }
 
-    class CalcViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class CalcViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView nameTextView;
         private TextView contentTextView;
@@ -73,7 +76,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
         @Override
         public void onClick(View view) {
             //Здесь основные действия
-            Log.d("qwerty", "onClick: ");
+           // Intent intent = new Intent(view.getContext(), MainActivity2.class);
+           // view.getContext().startActivity(intent);
+            Log.e("qwerty", "onClick: ");
         }
     }
 }
