@@ -21,11 +21,11 @@ import java.util.Collection;
 public class ByGoogleAdapter extends RecyclerView.Adapter<ByGoogleAdapter.CalcViewHolder> {
 
     private ArrayList<Calculator> calculatorList;
-    Activity activity;
+    Activity firstActivity;
 
-    public ByGoogleAdapter(ArrayList<Calculator> calculatorList, Activity activity) {
+    public ByGoogleAdapter(ArrayList<Calculator> calculatorList, Activity firstActivity) {
         this.calculatorList = calculatorList;
-        this.activity = activity;
+        this.firstActivity = firstActivity;
     }
 
     public void setItems(Collection<Calculator> calculators){
@@ -67,10 +67,10 @@ public class ByGoogleAdapter extends RecyclerView.Adapter<ByGoogleAdapter.CalcVi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.d("qwerty", "onClick: новый"  + getAdapterPosition());
+                    Log.d("qwerty", "onClick: "  + getAdapterPosition());
                     Intent intent = new Intent(view.getContext(), CalculatorActivity.class);
                     view.getContext().startActivity(intent);
-                    activity.overridePendingTransition(R.anim.animate_swipe_left_enter, R.anim.animate_swipe_left_exit);
+                    firstActivity.overridePendingTransition(R.anim.animate_swipe_left_enter, R.anim.animate_swipe_left_exit);
                 }
             });
         }
@@ -79,7 +79,5 @@ public class ByGoogleAdapter extends RecyclerView.Adapter<ByGoogleAdapter.CalcVi
             nameTextView.setText(calculator.getName());
             contentTextView.setText(calculator.getContent());
         }
-
-
     }
 }

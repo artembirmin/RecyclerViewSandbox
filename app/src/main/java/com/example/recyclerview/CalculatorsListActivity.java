@@ -3,14 +3,11 @@ package com.example.recyclerview;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
-
 import com.example.recyclerview.adapters.NoNameAdapter;
 import com.example.recyclerview.adapters.ByGoogleAdapter;
 import com.example.recyclerview.models.Calculator;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -23,7 +20,7 @@ public class CalculatorsListActivity extends AppCompatActivity implements NoName
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculators_list);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
-        initRV2();
+        initRVWithByGoogleAdapter();
     }
 
     @Override
@@ -32,8 +29,8 @@ public class CalculatorsListActivity extends AppCompatActivity implements NoName
         overridePendingTransition(R.anim.animate_swipe_left_enter, R.anim.animate_swipe_left_exit);
     }
 
-    private void initRV2(){
-        RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
+    private void initRVWithByGoogleAdapter(){
+        RecyclerView rv = findViewById(R.id.recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
         ByGoogleAdapter adapter = new ByGoogleAdapter(calculatorList, CalculatorsListActivity.this);
         rv.setAdapter(adapter);
@@ -43,8 +40,8 @@ public class CalculatorsListActivity extends AppCompatActivity implements NoName
         adapter.notifyDataSetChanged();
     }
 
-    private void initRV1(){
-        RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
+    private void initRVWithNoNameAdapter(){
+        RecyclerView rv = findViewById(R.id.recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
         NoNameAdapter adapter = new NoNameAdapter(calculatorList, this);
         rv.setAdapter(adapter);
