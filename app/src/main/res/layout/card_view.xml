@@ -31,8 +31,9 @@
                 android:paddingTop="4dp"
                 android:text="Имя калькулятора"
                 android:textColor="#222222"
-                android:textSize="24dp"
-                android:maxLines="1"/>
+                android:textSize="24sp"
+                android:lines="1"
+                android:ellipsize="end"/>
 
             <TextView
                 android:id="@+id/content"
@@ -42,9 +43,11 @@
                 android:fontFamily="monospace"
                 android:gravity="center"
                 android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="1+852-8965*85/869568"
-                android:textSize="18dp"
-                android:minLines="1"/>
+                android:textSize="18sp"
+                android:lines="1"
+                android:ellipsize="end"/>
 
         </LinearLayout>
 
