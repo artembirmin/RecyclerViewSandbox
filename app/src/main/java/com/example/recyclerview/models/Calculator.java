@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.example.recyclerview.models;
 
 public class Calculator {
     String name;
@@ -7,5 +7,13 @@ public class Calculator {
     public Calculator(String name, String content) {
         this.name = name;
         this.content = content;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getContent() {
+        return content;
     }
 }

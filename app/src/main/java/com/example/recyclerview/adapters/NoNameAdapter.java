@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.example.recyclerview.adapters;
 
 import android.content.Intent;
 import android.util.Log;
@@ -10,16 +10,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.recyclerview.CalculatorActivity;
+import com.example.recyclerview.R;
+import com.example.recyclerview.models.Calculator;
+
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
+public class NoNameAdapter extends RecyclerView.Adapter<NoNameAdapter.CalcViewHolder> {
 
     private ArrayList<Calculator> calculatorList;
     private OnCalculatorClickListener onCalculatorClickListener;
 
-    public RVAdapter (ArrayList<Calculator> calculatorList ,OnCalculatorClickListener calculatorClickListener) {
+    public NoNameAdapter(ArrayList<Calculator> calculatorList , OnCalculatorClickListener calculatorClickListener) {
         this.calculatorList = calculatorList;
         this.onCalculatorClickListener = calculatorClickListener;
     }
@@ -59,21 +62,21 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CalcViewHolder> {
 
         public CalcViewHolder(@NonNull View itemView, OnCalculatorClickListener calculatorClickListener) {
             super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.name);
-            contentTextView = (TextView) itemView.findViewById(R.id.content);
+            nameTextView = itemView.findViewById(R.id.name);
+            contentTextView = itemView.findViewById(R.id.content);
             this.calculatorClickListener = calculatorClickListener;
             itemView.setOnClickListener(this);
         }
 
         public void bind(Calculator calculator) {
-            nameTextView.setText(calculator.name);
-            contentTextView.setText(calculator.content);
+            nameTextView.setText(calculator.getName());
+            contentTextView.setText(calculator.getContent());
         }
 
         @Override
         public void onClick(View view) {
             //Здесь основные действия
-            Intent intent = new Intent(view.getContext(), MainActivity2.class);
+            Intent intent = new Intent(view.getContext(), CalculatorActivity.class);
             view.getContext().startActivity(intent);
             Log.d("qwerty", "onClick: " + getAdapterPosition());
             calculatorClickListener.onCalculatorClick(getAdapterPosition());
