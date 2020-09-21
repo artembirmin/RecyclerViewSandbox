@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.recyclerview.adapters.NoNameAdapter;
 import com.example.recyclerview.adapters.ByGoogleAdapter;
@@ -25,6 +26,8 @@ public class CalculatorsListActivity extends AppCompatActivity implements NoName
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculators_list);
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
         initRVWithByGoogleAdapter();
         FloatingActionButton fab = findViewById(R.id.fab);
