@@ -5,9 +5,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
 import com.example.recyclerview.adapters.NoNameAdapter;
 import com.example.recyclerview.adapters.ByGoogleAdapter;
 import com.example.recyclerview.models.Calculator;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -21,6 +27,13 @@ public class CalculatorsListActivity extends AppCompatActivity implements NoName
         setContentView(R.layout.activity_calculators_list);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
         initRVWithByGoogleAdapter();
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(CalculatorsListActivity.this, "Fab fab fab", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -36,7 +49,17 @@ public class CalculatorsListActivity extends AppCompatActivity implements NoName
         rv.setAdapter(adapter);
         adapter.setItems(Arrays.asList(new Calculator("Калькулятор 1", "1232435+433543+24*-3+5*-3"), new Calculator("Калькулятор 1", "1232435+433543+24*-3+5*-3"),
                 new Calculator("Калькулятор 2", "1233434343425544535532435+433543+24*-3+5*-3"),
-                new Calculator("Калькулятор 3", "1232435+433543+24*-3+5*-3")));
+                new Calculator("Калькулятор 3", "1232435+433543+24*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3")));
         adapter.notifyDataSetChanged();
     }
 
@@ -47,7 +70,17 @@ public class CalculatorsListActivity extends AppCompatActivity implements NoName
         rv.setAdapter(adapter);
         adapter.setItems(Arrays.asList(new Calculator("Калькулятор 1", "1232435+433543+24*-3+5*-3"), new Calculator("Калькулятор 1", "1232435+433543+24*-3+5*-3"),
                 new Calculator("Калькулятор 2", "1233434343425544535532435+433543+24*-3+5*-3"),
-                new Calculator("Калькулятор 3", "1232435+433543+24*-3+5*-3")));
+                new Calculator("Калькулятор 3", "1232435+433543+24*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3"),
+                new Calculator("Калькулятор 3", "*-3+5*-3")));
         adapter.notifyDataSetChanged();
     }
 }
