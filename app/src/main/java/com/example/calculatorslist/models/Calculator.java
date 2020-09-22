@@ -1,4 +1,4 @@
-package com.example.recyclerview.models;
+package com.example.calculatorslist.models;
 
 public class Calculator {
     String name;
