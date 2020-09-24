@@ -1,4 +1,4 @@
-package com.example.recyclerview.adapters;
+package com.example.calculatorslist.adapters;
 
 import android.content.Intent;
 import android.util.Log;
@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.recyclerview.CalculatorActivity;
-import com.example.recyclerview.R;
-import com.example.recyclerview.models.Calculator;
+import com.example.calculatorslist.CalculatorActivity;
+import com.example.calculatorslist.R;
+import com.example.calculatorslist.models.Calculator;
 
 import java.util.ArrayList;
 import java.util.Collection;
